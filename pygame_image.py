@@ -16,19 +16,23 @@ def main():
     kk_rct = kk_img.get_rect()
     kk_rct.center = (300, 200)
     tmr = 0
+    move_x, move_y = -1, 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         keys = pg.key.get_pressed()
-        if keys[pg.K_UP]:    
-            kk_rct.move_ip(0, -1)
-        if keys[pg.K_DOWN]:  
-            kk_rct.move_ip(0, 1)
-        if keys[pg.K_LEFT]:  
-            kk_rct.move_ip(-1, 0)
-        if keys[pg.K_RIGHT]: 
-            kk_rct.move_ip(1, 0)
+        if keys[pg.K_UP]:
+            move_x, move_y = -1, -1  
+        elif keys[pg.K_DOWN]:
+            move_x, move_y = -1, 1  
+        elif keys[pg.K_LEFT]:
+            move_x, move_y = -1, 0  
+        elif keys[pg.K_RIGHT]:
+            move_x, move_y = 1, 0  
+        elif not any(keys):  
+            move_x, move_y = -1, 0  
 
+        kk_rct.move_ip(move_x, move_y)
 
         x = -(tmr % 3200)
         screen.blit(bg_img, [x, 0]) # screen surfaceに背景画像surfaceを貼り付ける
