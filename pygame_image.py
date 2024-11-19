@@ -32,8 +32,8 @@ def main():
         elif not any(keys):  
             move_x, move_y = -1, 0  
 
+        
         kk_rct.move_ip(move_x, move_y)
-
         x = -(tmr % 3200)
         screen.blit(bg_img, [x, 0]) # screen surfaceに背景画像surfaceを貼り付ける
         screen.blit(bg_img2, [x+1600, 0])
